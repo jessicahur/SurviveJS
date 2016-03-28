@@ -20,6 +20,14 @@ const common = {
   },
   devtool: 'eval-source-map',
   module: {
+    preLoaders: [ //preLoaders section of the configuration gets executed before loaders
+      {
+        test: /\.js?$/,
+        loaders: ['jshint'],
+        // define an include so we check just the files we need
+        include: PATHS.app
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
