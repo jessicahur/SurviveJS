@@ -14,6 +14,10 @@ const common = {
   entry: {
     app: PATHS.app
   },
+  //Note that resolve.extensions setting will allow you to refer to JSX files without an extension
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   output: {
     path: PATHS.build,
     filename: 'bundle.js'
@@ -23,29 +27,38 @@ const common = {
     preLoaders: [ //preLoaders section of the configuration gets executed before loaders
       {
         test: /\.js?$/,
-        loaders: ['jshint'],
+        loaders: ['eslint'],
         // define an include so we check just the files we need
         include: PATHS.app
       }
     ],
     loaders: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-          query: {
-            presets: ['es2015'],
-            cacheDirectory: true,
-            plugins: [ 'transform-runtime' ]//https://www.npmjs.com/package/babel-plugin-transform-runtime
-          }
-      },
-      {
         // Test expects a RegExp! Note the slashes!
         test: /\.css$/,
         loaders: ['style', 'css'],
         // Include accepts either a path or an array of paths.
         include: PATHS.app
-      }
+      },
+      // {
+      //   test: /\.jsx$/,
+      //   include: PATHS.app,
+      //   loader: ['babel'],
+      //   query: {
+      //     cacheDirectory: true,
+      //     presets: ['react', 'es2015', 'survivejs-kanban']
+      //   }
+      // }
+      {
+        test: /\.jsx$/,
+        include: PATHS.app,
+        loader: 'babel',
+          query: {
+            presets: ['react', 'es2015', 'survivejs-kanban'],
+            cacheDirectory: true,
+            plugins: [ 'transform-runtime' ]//https://www.npmjs.com/package/babel-plugin-transform-runtime
+          }
+      },
     ]
   }
 };
