@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => <div>Learn Webpack</div>;
+export default () => <div>Learn Webpack and React</div>;
 
 /*Note: Even though we aren't referring to React directly through code here, it is good to remember
 that the JSX will get transformed into calls going through it.
