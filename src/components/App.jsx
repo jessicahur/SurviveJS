@@ -36,10 +36,10 @@ export default class App extends React.Component {
 
   addNote = () => { //We need to write this out instead of using addNote() {...} because we need fat arrow to bind 'this.setState'
     this.setState({
-      notes: this.state.notes.concat([{
+      notes: [...this.state.notes,{
         id: uuid.v4(),
         task: 'New Task'
-      }])
+      }]
     });
   };
 }
