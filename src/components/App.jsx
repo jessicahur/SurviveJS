@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'node-uuid';
 
+import Notes from './Notes.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,12 +29,11 @@ export default class App extends React.Component {
     return(
       <div>
         <button onClick={this.addNote}>+</button>
-        <ul> {notes.map(note => <li key={note.id}>{note.task}</li> )}
-        </ul>
+        <Notes notes={notes} />
       </div>
     );
   }
-
+//notes passed in at line 32 is from line 28. Otherwise it's this.state.notes
   addNote = () => { //We need to write this out instead of using addNote() {...} because we need fat arrow to bind 'this.setState'
     this.setState({
       notes: [...this.state.notes,{
