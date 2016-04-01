@@ -33,9 +33,19 @@ export default class Note extends React.Component{
       onBlur={this.finishEdit}
       onKeyPress={this.checkEnter} />
   };
-
+  //Check if there is an onDelete passed down as props
   renderNote = () => {
-    return <div onClick={this.edit}>{this.props.task}</div>;
+    const onDelete = this.props.onDelete; //if we don't have this then on line 42 we'll use this.props
+    return (
+      <div onClick={this.edit}>
+        <span> {this.props.task} </span>
+        {onDelete ? this.renderDelete() : null}
+      </div>
+    );
+  };
+
+  renderDelete = () => {
+    return <button onClick={this.props.onDelete}>x</button>;
   };
 
   edit = () => {
