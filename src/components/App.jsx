@@ -23,7 +23,7 @@ export default class App extends React.Component {
       ]
     };
   }
-
+  //We set method onEdit on of Notes to be App's editNote()
   render() {
     const notes = this.state.notes;
     return(

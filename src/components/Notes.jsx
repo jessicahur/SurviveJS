@@ -13,3 +13,7 @@ export default ({notes, onEdit}) => {
     );
 }
 
+/*Notes: We bind null because we don't want to explicitly change 'this' binding defined in App,
+and note.id is the first parameter of App's editNote: editNote(id, task) {}
+*/
+

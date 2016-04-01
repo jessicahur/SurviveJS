@@ -45,7 +45,7 @@ export default class Note extends React.Component{
   };
 
   checkEnter = (e) => {
-    //If the user hit *enter*. we finish
+    //If the user hit *enter*, we finish. This gets called everytime we input something
     if(e.key === 'Enter') {
       this.finishEdit(e);
     }
@@ -53,10 +53,8 @@ export default class Note extends React.Component{
 
   finishEdit = (e) => {
     const value = e.target.value;
-
     if(this.props.onEdit) {
       this.props.onEdit(value);
-
       //Exit edit mode
       this.setState({
         editing: false
